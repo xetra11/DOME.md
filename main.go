@@ -1,11 +1,9 @@
 package main
 
 import (
-	"github.com/sirupsen/logrus"
+	"github.com/xetra11/DOME.md/src/parser"
 )
 
-var logger = logrus.WithFields(logrus.Fields{})
-
 func main() {
-	logger.Info("test")
+	parser.Parse()
 }
