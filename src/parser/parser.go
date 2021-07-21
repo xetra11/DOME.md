@@ -1,7 +1,6 @@
 package parser
 
 import (
-	"fmt"
 	"github.com/agrison/go-commons-lang/stringUtils"
 	"github.com/sirupsen/logrus"
 	"io/ioutil"
@@ -25,13 +24,15 @@ func Parse(path string) ParseResult {
 
 	fileContent := string(fileData)
 
-	fmt.Print(fileContent)
-
 	return ParseResult{
 		InstallationSection: InstallationSection{
-			exists: stringUtils.Contains(fileContent, "Installation*"),
+			exists: hasInstallation(fileContent),
 		},
 	}
+}
+
+func hasInstallation(fileContent string) bool {
+	return stringUtils.Contains(fileContent, "Installation*")
 }
 
 func check(e error) {
