@@ -10,9 +10,14 @@ var logger = logrus.WithFields(logrus.Fields{})
 
 type ParseResult struct {
 	InstallationSection InstallationSection
+	UsageSection        UsageSection
 }
 
 type InstallationSection struct {
+	exists bool
+}
+
+type UsageSection struct {
 	exists bool
 }
 
@@ -28,11 +33,18 @@ func Parse(path string) ParseResult {
 		InstallationSection: InstallationSection{
 			exists: hasInstallation(fileContent),
 		},
+		UsageSection: UsageSection{
+			exists: hasUsage(fileContent),
+		},
 	}
 }
 
 func hasInstallation(fileContent string) bool {
 	return stringUtils.Contains(fileContent, "Installation*")
+}
+
+func hasUsage(fileContent string) bool {
+	return stringUtils.Contains(fileContent, "Usage*")
 }
 
 func check(e error) {

@@ -4,10 +4,18 @@ import (
 	"testing"
 )
 
-func TestShouldDiscoverInstallationHeader(TEST *testing.T) {
+func TestShouldDiscoverInstallationSection(TEST *testing.T) {
 	result := Parse("../../test/test.md")
 
 	if !result.InstallationSection.exists {
+		TEST.Fail()
+	}
+}
+
+func TestShouldDiscoverUsageSection(TEST *testing.T) {
+	result := Parse("../../test/test.md")
+
+	if !result.UsageSection.exists {
 		TEST.Fail()
 	}
 }

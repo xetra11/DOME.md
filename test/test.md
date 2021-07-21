@@ -9,7 +9,7 @@
 echo 'installing tool...'
 ```
 
-### Usage
+### Usage*
 #### Setup*
 ```bash
 echo 'setup executed'
