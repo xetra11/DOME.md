@@ -2,6 +2,7 @@ package parser
 
 import (
 	"fmt"
+	"github.com/agrison/go-commons-lang/stringUtils"
 	"github.com/sirupsen/logrus"
 	"io/ioutil"
 )
@@ -19,14 +20,16 @@ type InstallationSection struct {
 func Parse(path string) ParseResult {
 	logger.Info("Parsing README.md...")
 
-	data, err := ioutil.ReadFile(path)
+	fileData, err := ioutil.ReadFile(path)
 	check(err)
 
-	fmt.Print(data)
+	fileContent := string(fileData)
+
+	fmt.Print(fileContent)
 
 	return ParseResult{
 		InstallationSection: InstallationSection{
-			exists: false,
+			exists: stringUtils.Contains(fileContent, "Installation*"),
 		},
 	}
 }

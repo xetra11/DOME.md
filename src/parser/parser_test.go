@@ -10,5 +10,4 @@ func TestShouldDiscoverInstallationHeader(TEST *testing.T) {
 	if !result.InstallationSection.exists {
 		TEST.Fail()
 	}
-
 }
