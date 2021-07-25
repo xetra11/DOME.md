@@ -4,6 +4,7 @@ import (
 	"github.com/agrison/go-commons-lang/stringUtils"
 	"github.com/sirupsen/logrus"
 	"io/ioutil"
+	"src/usageparser"
 )
 
 var logger = logrus.WithFields(logrus.Fields{})
@@ -19,6 +20,7 @@ type InstallationSection struct {
 
 type UsageSection struct {
 	exists bool
+	steps []UsageStep
 }
 
 func Parse(path string) ParseResult {
@@ -38,6 +40,7 @@ func Parse(path string) ParseResult {
 		},
 	}
 }
+
 
 func hasInstallation(fileContent string) bool {
 	return stringUtils.Contains(fileContent, "Installation*")

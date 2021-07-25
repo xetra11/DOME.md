@@ -11,11 +11,3 @@ func TestShouldDiscoverInstallationSection(TEST *testing.T) {
 		TEST.Fail()
 	}
 }
-
-func TestShouldDiscoverUsageSection(TEST *testing.T) {
-	result := Parse("../../test/test.md")
-
-	if !result.UsageSection.exists {
-		TEST.Fail()
-	}
-}
