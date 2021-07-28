@@ -1,0 +1,22 @@
+{
+  "name": "dome.md",
+  "version": "1.0.0",
+  "description": "README.md interpreter",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/xetra11/DOME.md.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/xetra11/DOME.md/issues"
+  },
+  "homepage": "https://github.com/xetra11/DOME.md#readme",
+  "dependencies": {
+    "bats": "^1.4.1"
+  }
+}

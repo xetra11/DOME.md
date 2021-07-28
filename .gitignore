@@ -1,3 +1,4 @@
 /.idea/
 /dome.md.iml
 go.sum
+/node_modules/
