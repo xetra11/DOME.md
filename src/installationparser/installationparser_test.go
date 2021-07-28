@@ -1,14 +1,11 @@
-package usageparser
+package insallationparser
 
 import (
 	"io/ioutil"
 	"testing"
 )
 
-func TestShouldDiscoverUsageSectionSteps(TEST *testing.T) {
-}
-
-func TestShouldDiscoverUsageSection(TEST *testing.T) {
+func TestShouldDiscoverInstallationSection(TEST *testing.T) {
 	fileData, err := ioutil.ReadFile("../../test/test.md")
 	check(err)
 

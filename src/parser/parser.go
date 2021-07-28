@@ -1,26 +1,17 @@
 package parser
 
 import (
-	"github.com/agrison/go-commons-lang/stringUtils"
 	"github.com/sirupsen/logrus"
+	"github.com/xetra11/DOME.md/src/installationparser"
+	"github.com/xetra11/DOME.md/src/usageparser"
 	"io/ioutil"
-	"src/usageparser"
 )
 
 var logger = logrus.WithFields(logrus.Fields{})
 
 type ParseResult struct {
-	InstallationSection InstallationSection
-	UsageSection        UsageSection
-}
-
-type InstallationSection struct {
-	exists bool
-}
-
-type UsageSection struct {
-	exists bool
-	steps []UsageStep
+	InstallationSection insallationparser.InstallationSection
+	UsageSection        usageparser.UsageSection
 }
 
 func Parse(path string) ParseResult {
@@ -31,23 +22,13 @@ func Parse(path string) ParseResult {
 
 	fileContent := string(fileData)
 
+	installationSection := insallationparser.ExtractSection(fileContent)
+	usageSection := usageparser.ExtractSection(fileContent)
+
 	return ParseResult{
-		InstallationSection: InstallationSection{
-			exists: hasInstallation(fileContent),
-		},
-		UsageSection: UsageSection{
-			exists: hasUsage(fileContent),
-		},
+		InstallationSection: installationSection,
+		UsageSection: usageSection,
 	}
-}
-
-
-func hasInstallation(fileContent string) bool {
-	return stringUtils.Contains(fileContent, "Installation*")
-}
-
-func hasUsage(fileContent string) bool {
-	return stringUtils.Contains(fileContent, "Usage*")
 }
 
 func check(e error) {
